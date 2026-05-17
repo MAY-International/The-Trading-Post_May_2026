@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Trading Post — May 2026 | MAY INT Trade Intelligence</title>
+<style>
+  /* ============================================================
+     THE TRADING POST — MAY INT Trade Intelligence
+     Issue #5 | May 2026
+     Brand: #1A1C28 (navy) | #A03730 (burgundy) | #F7F7F7 (light)
+  ============================================================ */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Aptos', 'Inter', system-ui, -apple-system, Arial, sans-serif;
+    background: #DCDCDC;
+    color: #1A1C28;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper { width: 100%; background: #DCDCDC; padding: 28px 16px 48px; }
+
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  .header {
+    background: #1A1C28;
+    padding: 36px 44px 30px;
+  }
+  .header-masthead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .header-title { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.8px; line-height: 1; }
+  .header-title span { color: #A03730; }
+  .header-sub { font-size: 10.5px; color: #8B8FA8; letter-spacing: 2.2px; text-transform: uppercase; margin-top: 5px; }
+  .header-issue {
+    text-align: right;
+    color: #8B8FA8;
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+  .header-issue strong { color: #fff; font-size: 13px; }
+  .header-rule { border: none; border-top: 1px solid #2E3144; margin: 0 0 16px; }
+  .header-tagline {
+    font-size: 12px;
+    color: #8B8FA8;
+    letter-spacing: 0.4px;
+  }
+  .header-tagline em { color: #A03730; font-style: normal; }
+
+  /* ── SECTION CHROME ──────────────────────────────────────── */
+  .section { padding: 32px 44px; border-bottom: 1px solid #EBEBEB; }
+  .section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #A03730;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1A1C28;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .section-rule { border: none; border-top: 2px solid #A03730; width: 38px; margin-bottom: 18px; }
+  .section p { margin-bottom: 14px; color: #2D2F3E; }
+  .section p:last-child { margin-bottom: 0; }
+  h3 { font-size: 13.5px; font-weight: 700; color: #1A1C28; margin: 20px 0 8px; letter-spacing: 0.2px; }
+  h4 { font-size: 12.5px; font-weight: 700; color: #A03730; margin: 16px 0 6px; }
+
+  /* ── SNAPSHOT GRID ───────────────────────────────────────── */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .snap-card {
+    background: #F7F7F7;
+    border-radius: 4px;
+    padding: 14px 16px;
+    border-left: 3px solid #A03730;
+  }
+  .snap-label { font-size: 9px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: #8B8FA8; margin-bottom: 4px; }
+  .snap-value { font-size: 20px; font-weight: 700; color: #1A1C28; line-height: 1; }
+  .snap-meta { font-size: 10.5px; color: #6B7280; margin-top: 4px; }
+  .snap-up { color: #B45309; }
+  .snap-dn { color: #A03730; }
+  .snap-flat { color: #4B5563; }
+
+  /* ── DATA TABLE ──────────────────────────────────────────── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 18px 0; }
+  .data-table th {
+    background: #1A1C28;
+    color: #F7F7F7;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  .data-table td { padding: 8px 12px; border-bottom: 1px solid #F0F0F0; color: #2D2F3E; }
+  .data-table tr:nth-child(even) td { background: #FAFAFA; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .data-table .tag-up { color: #B45309; font-weight: 600; }
+  .data-table .tag-dn { color: #A03730; font-weight: 600; }
+  .data-table .tag-flat { color: #6B7280; font-weight: 600; }
+
+  /* ── COMMODITY CARDS ─────────────────────────────────────── */
+  .commodity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .comm-card {
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .comm-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: #A03730;
+  }
+  .comm-name { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8B8FA8; margin-bottom: 4px; }
+  .comm-price { font-size: 22px; font-weight: 800; color: #1A1C28; line-height: 1; }
+  .comm-unit { font-size: 11px; color: #6B7280; margin-top: 2px; }
+  .comm-change { font-size: 11px; margin-top: 6px; font-weight: 600; }
+  .comm-change.up { color: #B45309; }
+  .comm-change.dn { color: #A03730; }
+
+  /* ── CSS BAR CHARTS ──────────────────────────────────────── */
+  .chart-title { font-size: 11px; font-weight: 700; color: #1A1C28; letter-spacing: 0.3px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .bar-row { display: flex; align-items: center; margin-bottom: 9px; gap: 10px; }
+  .bar-label { font-size: 11px; color: #4B5563; width: 48px; flex-shrink: 0; text-align: right; }
+  .bar-track { flex: 1; background: #F0F0F0; border-radius: 2px; height: 14px; position: relative; }
+  .bar-fill { height: 100%; border-radius: 2px; background: #1A1C28; position: absolute; left: 0; top: 0; }
+  .bar-fill.accent { background: #A03730; }
+  .bar-fill.warm { background: #B45309; }
+  .bar-val { font-size: 11px; font-weight: 700; color: #1A1C28; width: 54px; flex-shrink: 0; }
+
+  /* ── CALLOUT / HIGHLIGHT ─────────────────────────────────── */
+  .callout {
+    background: #F7F7F7;
+    border-left: 4px solid #A03730;
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 13.5px;
+    color: #2D2F3E;
+  }
+  .callout strong { color: #A03730; }
+
+  .alert-box {
+    background: #FEF3C7;
+    border-left: 4px solid #B45309;
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 13.5px;
+    color: #2D2F3E;
+  }
+  .alert-box strong { color: #B45309; }
+
+  /* ── RISK TAGS ───────────────────────────────────────────── */
+  .risk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 18px 0; }
+  .risk-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; background: #F7F7F7; border-radius: 4px; }
+  .risk-badge {
+    font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 7px; border-radius: 2px; flex-shrink: 0; margin-top: 2px;
+  }
+  .risk-high { background: #A03730; color: #fff; }
+  .risk-med  { background: #B45309; color: #fff; }
+  .risk-low  { background: #4B5563; color: #fff; }
+  .risk-text { font-size: 12px; color: #2D2F3E; line-height: 1.45; }
+  .risk-text strong { display: block; color: #1A1C28; font-weight: 700; font-size: 12.5px; }
+
+  /* ── OPPORTUNITY CARDS ───────────────────────────────────── */
+  .opp-card {
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin: 12px 0;
+    position: relative;
+  }
+  .opp-label { font-size: 9px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: #A03730; margin-bottom: 6px; }
+  .opp-title { font-size: 14px; font-weight: 700; color: #1A1C28; margin-bottom: 8px; }
+  .opp-body { font-size: 13px; color: #4B5563; line-height: 1.55; }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
+  .footer {
+    background: #1A1C28;
+    padding: 28px 44px 24px;
+    color: #8B8FA8;
+    font-size: 11px;
+  }
+  .footer-logo { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .footer-logo span { color: #A03730; }
+  .footer-sub { font-size: 11px; color: #8B8FA8; margin-bottom: 14px; }
+  .footer-contact { font-size: 12px; margin-bottom: 14px; }
+  .footer-contact a { color: #A03730; text-decoration: none; }
+  .footer-divider { border: none; border-top: 1px solid #2E3144; margin: 14px 0; }
+  .footer-disclaimer { font-size: 10px; color: #5A5E72; line-height: 1.6; }
+  .footer-disclaimer a { color: #4A4E60; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .section { padding: 24px 20px; }
+    .header { padding: 24px 20px 20px; }
+    .footer { padding: 22px 20px; }
+    .snapshot-grid { grid-template-columns: repeat(2, 1fr); }
+    .commodity-grid { grid-template-columns: 1fr; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .header-masthead { flex-direction: column; gap: 12px; }
+    .header-issue { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+<div class="container">
+
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<div class="header">
+  <div class="header-masthead">
+    <div>
+      <div class="header-title">The Trading <span>Post</span></div>
+      <div class="header-sub">MAY INT Trade Intelligence</div>
+    </div>
+    <div class="header-issue">
+      <strong>Issue #5 — May 2026</strong><br>
+      Published 17 May 2026<br>
+      MAY International Trade Services Ltd.
+    </div>
+  </div>
+  <hr class="header-rule">
+  <div class="header-tagline">Bangladesh &middot; Trade Finance &middot; Commodities &middot; Risk Intelligence &middot; <em>Monthly Edition</em></div>
+</div>
+
+<!-- ══ 1. EDITORIAL ═════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Opening Note</div>
+  <div class="section-title">From the Desk of MAY INT Intelligence</div>
+  <div class="section-rule"></div>
+
+  <p>Two months into the Strait of Hormuz crisis, and the arithmetic is now unambiguous. Bangladesh entered 2026 with stronger-than-expected buffers — record remittances, rebuilding FX reserves, and easing inflation. May's data reveals how quickly a sustained energy supply shock can erode those buffers. Gross reserves have slipped from April's $35.04 billion peak to $34.32 billion. Inflation, which appeared to be turning a corner at 8.71% in March, has re-accelerated to 9.04% in April — driven squarely by fuel and transport costs. The energy import bill is estimated to have surged by $4.8 billion on an annualised basis. The remittance inflow, now in its fifth consecutive month above $3 billion, is providing a critical offset — but it is absorbing shock rather than building forward capacity.</p>
+
+  <p>The RMG export figure for April deserves careful reading. The 31.21% year-on-year growth to $3.14 billion is real in absolute terms, but it reflects a depressed April 2025 base — a month disrupted by the Eid-ul-Fitr overlap, India's transshipment revocation, and early buyer uncertainty from US trade policy signals. The underlying demand picture is more nuanced: Western retailers are still cautious, and the Hormuz-driven freight cost surge is compressing buyer margins. Headline export numbers will look strong through Q2 on base effects, but forward order pipelines deserve scrutiny.</p>
+
+  <p>On the structural side, the BOFR benchmark is now in its second operational month, providing daily rate signals that the market is beginning to internalise. The IMF's July review looms as the next major policy checkpoint — with the fund pressing for a time-bound financial sector reform roadmap before disbursing the next tranche. How Bangladesh navigates the energy shock while simultaneously demonstrating reform progress will define the credit story for the remainder of FY26.</p>
+
+  <p>MAY INT's read for May: the Hormuz crisis is no longer a risk event — it is the operating environment. Bangladesh's trade finance practitioners need to treat elevated energy costs, higher freight rates, and inflation persistence as baseline assumptions, not tail scenarios, for the rest of this fiscal year.</p>
+</div>
+
+<!-- ══ 2. MARKET SNAPSHOT ════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Market Snapshot</div>
+  <div class="section-title">Key Indicators — May 2026</div>
+  <div class="section-rule"></div>
+
+  <div class="snapshot-grid">
+    <div class="snap-card">
+      <div class="snap-label">BDT / USD</div>
+      <div class="snap-value">122.75</div>
+      <div class="snap-meta snap-flat">▸ Stable (Apr: 122.95)</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">FX Reserves (Gross)</div>
+      <div class="snap-value">$34.32B</div>
+      <div class="snap-meta snap-dn">▼ From $35.04B (Apr)</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">CPI Inflation</div>
+      <div class="snap-value">9.04%</div>
+      <div class="snap-meta snap-up">▲ Re-accelerating (Mar: 8.71%)</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Brent Crude</div>
+      <div class="snap-value">$109</div>
+      <div class="snap-meta snap-up">▲ /bbl — Hormuz premium</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Remittance (Apr)</div>
+      <div class="snap-value">$3.13B</div>
+      <div class="snap-meta snap-flat">▸ 5th consecutive $3B+ month</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">WCI Freight</div>
+      <div class="snap-value">$2,553</div>
+      <div class="snap-meta snap-up">▲ /40ft — +12% WoW (May 14)</div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Indicator</th>
+        <th class="num">Value</th>
+        <th class="num">Prior</th>
+        <th>Signal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Policy Rate (BB)</td>
+        <td class="num">10.00%</td>
+        <td class="num">10.00%</td>
+        <td class="tag-flat">HOLD</td>
+      </tr>
+      <tr>
+        <td>BOFR (Apr 15 launch)</td>
+        <td class="num">10.42%</td>
+        <td class="num">—</td>
+        <td class="tag-flat">MONTH 2</td>
+      </tr>
+      <tr>
+        <td>Standing Deposit Facility</td>
+        <td class="num">7.50%</td>
+        <td class="num">8.00%</td>
+        <td class="tag-dn">CUT −50bps</td>
+      </tr>
+      <tr>
+        <td>FX Reserves (BPM-6)</td>
+        <td class="num">$29.65B</td>
+        <td class="num">~$30.1B</td>
+        <td class="tag-dn">DECLINING</td>
+      </tr>
+      <tr>
+        <td>RMG Exports (Apr)</td>
+        <td class="num">$3.14B</td>
+        <td class="num">$3.48B (Mar)</td>
+        <td class="tag-up">+31% YoY*</td>
+      </tr>
+      <tr>
+        <td>Trade Deficit (Jul–Mar)</td>
+        <td class="num">$19.17B</td>
+        <td class="num">$16.1B prior yr</td>
+        <td class="tag-dn">WIDENING</td>
+      </tr>
+      <tr>
+        <td>Remittance (Jul–Apr)</td>
+        <td class="num">$29.33B</td>
+        <td class="num">$24.54B prior yr</td>
+        <td class="tag-up">+19.5% YoY</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:#8B8FA8;">* RMG April YoY growth reflects depressed April 2025 base. Sources: Bangladesh Bank, BGMEA, BB BOFR portal.</p>
+</div>
+
+<!-- ══ 3. ECONOMIC OUTLOOK ═══════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Economic Outlook</div>
+  <div class="section-title">Growth Under Pressure: Energy Shock Reshapes FY26 Trajectory</div>
+  <div class="section-rule"></div>
+
+  <p>The IMF's revised FY26 growth projection of 4.7% for Bangladesh remains the central forecast, but the confidence interval has widened materially since the Hormuz closure extended from a brief disruption into a structural operating constraint. The energy sector is the transmission mechanism: with 66% of electricity generation gas-dependent and two-thirds of LNG supply previously transiting Hormuz, Bangladesh's power sector is absorbing costs that flow directly into industrial and consumer prices.</p>
+
+  <p>The inflation re-acceleration to 9.04% in April — led by transport (9.31%) and housing/utilities (8.92%) — confirms that the energy shock is now embedded in the price level, not merely transitory. Bangladesh Bank's decision to hold the policy rate at 10% reflects a difficult trade-off: tightening further risks amplifying the growth slowdown, while cutting prematurely risks anchoring inflation above the 7% target for a prolonged period.</p>
+
+  <div class="callout">
+    <strong>Fiscal pressure:</strong> Bangladesh faces an estimated $4.8 billion annualised increase in energy import costs against the pre-crisis baseline. Even with April remittances at $3.13 billion and the fiscal year's cumulative inflow at $29.33 billion (+19.5% YoY), the current account math is tighter than the headline reserve figure suggests.
+  </div>
+
+  <p>The FX reserve trajectory is the clearest indicator of stress: gross reserves fell from $35.04 billion in April to $34.32 billion by mid-May. Under IMF BPM-6 methodology, usable reserves stand at approximately $29.65 billion — providing roughly 4.5 months of import cover, which remains adequate but is thinning. The critical variable over the next 60 days is whether the Hormuz situation stabilises sufficiently to allow LNG and crude tanker transits to resume at meaningful volumes.</p>
+</div>
+
+<!-- ══ 4. TRADE FINANCE ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Trade Finance</div>
+  <div class="section-title">LC Portfolios Absorbing the Energy Price Shock</div>
+  <div class="section-rule"></div>
+
+  <p>The Hormuz crisis has created a specific operational pressure on Bangladesh's trade finance infrastructure: a widening gap between the price assumptions embedded in open LCs and the settlement values those LCs will need to meet at maturity. Bangladesh imports approximately 1.4 million tonnes of crude oil annually under long-term contracts with Saudi Aramco and ADNOC — both routed via Hormuz. Energy LCs opened 90 days ago at $75–80/bbl are now settling at $109/bbl, representing a 35–45% cost overrun on the commodity component alone.</p>
+
+  <h3>Key LC Market Pressures</h3>
+
+  <p><strong>Energy import LCs:</strong> The Bangladesh Power Development Board and private power companies are the most exposed. Any Bangladesh Bank administrative adjustment to LC margin requirements for energy imports would be a critical market signal — watch for circulars in June.</p>
+
+  <p><strong>Freight surcharge LCs:</strong> Shipping lines are applying Emergency Fuel Surcharges (EFS) and Peak Season Surcharges (PSS) on Transpacific and Asia-Europe lanes. The WCI surged 12% week-on-week to $2,553/40ft as of May 14. For RMG exporters with 60–90 day payment terms, the freight cost included in LC documentation at shipment is increasingly diverging from market rates at draw-down.</p>
+
+  <p><strong>BOFR-linked floating rate facilities:</strong> Banks with floating-rate trade finance portfolios referencing BOFR are now generating live daily rate signals for the second month. Legal documentation amendments for portfolios still referencing legacy benchmarks remain outstanding at many institutions — the June quarter-end review cycle is the natural prompt to accelerate this work.</p>
+
+  <div class="alert-box">
+    <strong>Practitioner note:</strong> For any LC opened against an energy import at commodity prices more than 60 days old, issuers should review whether the LC amount remains sufficient to cover likely settlement costs. An underfunded LC at maturity creates a payment gap that becomes a credit event under the facility agreement.
+  </div>
+</div>
+
+<!-- ══ 5. CREDIT RISK ════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Credit &amp; Counterparty Risk</div>
+  <div class="section-title">Sovereign and Corporate Credit: The IMF Variable</div>
+  <div class="section-rule"></div>
+
+  <p>Bangladesh's sovereign risk profile is in a delicate equilibrium. The IMF program remains on track, with the next formal review scheduled for July 2026 and approximately $1.3 billion in tranche disbursement expected by that period. However, the IMF has explicitly requested a written, time-bound financial sector reform roadmap as a precondition — and the Hormuz-driven economic disruption is complicating the government's reform sequencing.</p>
+
+  <h3>Key Credit Risk Vectors</h3>
+
+  <p><strong>Sovereign:</strong> The combination of a widening trade deficit ($19.17 billion July–March), declining reserves, rising inflation, and constrained fiscal space from energy subsidy costs represents a manageable but deteriorating picture. The IMF program is the primary credit anchor — its continuity is the central watchpoint for sovereign risk assessors.</p>
+
+  <p><strong>Banking sector:</strong> Non-performing loan ratios remain elevated across state-owned commercial banks. The SDF rate cut to 7.5% is designed to push liquidity into lending rather than central bank parking — but banks exercising appropriate credit discipline in an uncertain environment will be reluctant to extend. Private sector credit growth remains below target.</p>
+
+  <p><strong>Corporate — Energy sector:</strong> Private power producers with fuel supply contracts referencing Hormuz-transiting cargoes are the highest credit risk segment. Several have begun requesting restructuring discussions with their lending banks. Watch for Bangladesh Bank guidance on energy sector restructured loan classification — any regulatory forbearance signal would have broader sector implications.</p>
+</div>
+
+<!-- ══ 6. MARITIME & SUPPLY CHAIN ════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Maritime &amp; Supply Chain</div>
+  <div class="section-title">Two Chokepoints, One Supply Chain: Bangladesh Navigates Dual Disruption</div>
+  <div class="section-rule"></div>
+
+  <p>Bangladesh's supply chain is now operating under simultaneous disruption from two of the world's most critical maritime chokepoints. The Red Sea / Suez route remains effectively closed to commercial shipping — Cape of Good Hope rerouting has added 10–14 days to Asia-Europe transit times and remains the operating reality entering month five. The Strait of Hormuz crisis, which began as a short-term disruption in late March, has extended to 69+ days of effective closure, with commercial traffic running at approximately 5% of pre-war averages as of early May.</p>
+
+  <div class="alert-box">
+    <strong>Dual disruption calculus:</strong> A Bangladesh RMG container being shipped to Rotterdam faces Cape routing (Red Sea avoidance), elevated freight rates ($2,413/40ft on Shanghai-Rotterdam), and now additional Hormuz insurance premium surcharges. Total logistics cost per container has roughly doubled from pre-crisis baselines.
+  </div>
+
+  <h3>Freight Rate Snapshot (May 14, 2026)</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Route</th><th class="num">Rate ($/40ft)</th><th>WoW Change</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Global Average (WCI)</td><td class="num">$2,553</td><td class="tag-up">+12%</td></tr>
+      <tr><td>Shanghai → Rotterdam</td><td class="num">$2,413</td><td class="tag-up">+11%</td></tr>
+      <tr><td>Shanghai → Genoa</td><td class="num">$3,701</td><td class="tag-up">+20%</td></tr>
+      <tr><td>Shanghai → Los Angeles</td><td class="num">$3,357</td><td class="tag-up">+10%</td></tr>
+      <tr><td>Shanghai → New York</td><td class="num">$4,252</td><td class="tag-up">+14%</td></tr>
+    </tbody>
+  </table>
+
+  <p>The surge in freight rates is driven by a convergence of factors: carrier Emergency Fuel Surcharges reflecting elevated bunker costs, Peak Season Surcharges applied ahead of Q3 demand, and tight vessel availability as Cape routing absorbs effective capacity. Shippers are booking earlier than usual for the Asia-Europe peak season. For Bangladesh RMG exporters, the implication is straightforward: buyers will attempt to pass freight cost increases back through price negotiation at the next order cycle.</p>
+
+  <p>Chattogram port operations are currently stable, though dwell times have increased marginally as import cargo — particularly energy-related bulk — faces allocation pressure from routing delays. Port authority authorities have issued guidance on priority berthing for LNG and fuel tankers to minimise disruption to power sector supply chains.</p>
+</div>
+
+<!-- ══ 7. COMMODITY INTELLIGENCE ══════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Commodity Intelligence</div>
+  <div class="section-title">Energy Dominates: Brent at $109, Agricultural Prices Diverge</div>
+  <div class="section-rule"></div>
+
+  <p>Crude oil is the defining commodity story of May 2026. Brent settled around $109/bbl on May 15 — a level that would have represented a crisis price in any prior cycle but is now near the lower end of May's trading range, having peaked above $117/bbl in April as the Hormuz closure first took full effect. The market has partially adjusted to the new supply reality: Cape-routed cargoes, reduced Gulf production flowing through alternative terminals, and early demand response from high-price-sensitive economies have all contributed to a partial stabilisation. The Hormuz situation, however, remains unresolved.</p>
+
+  <div class="commodity-grid">
+    <div class="comm-card">
+      <div class="comm-name">Brent Crude</div>
+      <div class="comm-price">$109.24</div>
+      <div class="comm-unit">USD / barrel (May 15)</div>
+      <div class="comm-change up">▲ Hormuz crisis premium sustained</div>
+    </div>
+    <div class="comm-card">
+      <div class="comm-name">Palm Oil</div>
+      <div class="comm-price">~$990</div>
+      <div class="comm-unit">USD / MT (4,420 MYR/T)</div>
+      <div class="comm-change up">▲ +15.9% YoY; demand rebound expected</div>
+    </div>
+    <div class="comm-card">
+      <div class="comm-name">Cotton</div>
+      <div class="comm-price">$1.57</div>
+      <div class="comm-unit">USD / kg (71 USc/lb)</div>
+      <div class="comm-change dn">▼ Softer; supply-side pressures easing</div>
+    </div>
+    <div class="comm-card">
+      <div class="comm-name">Wheat</div>
+      <div class="comm-price">~$200</div>
+      <div class="comm-unit">USD / MT</div>
+      <div class="comm-change up">▲ USDA raised estimates; US drought risk</div>
+    </div>
+  </div>
+
+  <p>Palm oil at approximately $990/MT (4,420 MYR/T) is 15.9% higher year-on-year, driven by strong biodiesel demand and tight supply from Indonesia and Malaysia. Bangladesh's palm oil import bill has risen materially — palm oil is a critical cooking oil component in the domestic food basket, with direct pass-through to food CPI. April's food inflation print of 8.39% reflects in part the palm oil price transmission.</p>
+
+  <p>Cotton at $1.57/kg (71 USc/lb) has softened from March's $1.70/kg — a relative relief for Bangladesh's RMG sector, which consumes significant quantities of cotton yarn. However, the softening cotton price provides only partial offset to the freight cost increases that dominate exporter cost structures. Wheat at approximately $200/MT is ticking higher on USDA supply revisions — monitoring Bangladesh's flour and bread price dynamics is warranted given the food inflation sensitivity.</p>
+</div>
+
+<!-- ══ 8. RISK RADAR ═══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Risk Radar</div>
+  <div class="section-title">Top Risks — May 2026</div>
+  <div class="section-rule"></div>
+
+  <div class="risk-grid">
+    <div class="risk-item">
+      <span class="risk-badge risk-high">HIGH</span>
+      <div class="risk-text">
+        <strong>Hormuz Extended Closure</strong>
+        70+ days closed; no credible resolution timeline. Every additional week adds to Bangladesh's energy import bill and freight cost baseline. The tail risk is a closure extending to Q3.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-high">HIGH</span>
+      <div class="risk-text">
+        <strong>Inflation Re-Acceleration</strong>
+        April CPI at 9.04% (food 8.39%, non-food 9.57%). Energy and transport cost transmission still working through the price level. May figure (released in June) may exceed 9.5%.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-med">MED</span>
+      <div class="risk-text">
+        <strong>IMF Review Uncertainty</strong>
+        July review requires time-bound reform roadmap. Political economy of reform execution during an energy shock is challenging. Tranche delay would affect sentiment.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-med">MED</span>
+      <div class="risk-text">
+        <strong>FX Reserve Erosion</strong>
+        Reserves declining from April's $35.04B peak. Energy import costs absorbing remittance buffer. BPM-6 usable reserves at ~$29.65B — adequate but thinning.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-med">MED</span>
+      <div class="risk-text">
+        <strong>RMG Demand Uncertainty</strong>
+        April's +31% YoY growth is partly optical (base effect). Forward order pipelines from Western buyers face margin pressure from elevated freight and input costs.
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge risk-low">LOW</span>
+      <div class="risk-text">
+        <strong>BDT Exchange Rate</strong>
+        BDT/USD stable at 122.75. Bangladesh Bank managing orderly conditions. Material depreciation risk only emerges if reserve erosion accelerates significantly.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 9. REGULATORY WATCH ════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Regulatory &amp; Compliance Watch</div>
+  <div class="section-title">BOFR Month Two, Energy Pricing Policy, and IMF Conditionality</div>
+  <div class="section-rule"></div>
+
+  <h3>BOFR: Second Month in Operation</h3>
+  <p>The Bangladesh Overnight Financing Rate (BOFR), launched April 15 at 10.42%, is now generating daily volume-weighted rate signals from interbank repo transactions. The companion Dhaka Overnight Money Market Rate (DOMMR) opened at 10.09%. For trade finance practitioners, the practical implication of month two is that floating-rate facilities with BOFR as reference rate should now be producing consistent rate-setting calculations — banks that have not yet completed legal documentation amendments for legacy-benchmark portfolios are approaching a credibility deadline with counterparties.</p>
+
+  <h3>SDF Rate Cut and Private Credit</h3>
+  <p>Bangladesh Bank's decision to cut the Standing Deposit Facility rate from 8.00% to 7.50% under the H1 FY26 Monetary Policy Statement is designed to reduce the incentive for commercial banks to park excess liquidity at the central bank rather than lending into the economy. The effect has been modest to date — private sector credit growth remains below the central bank's target, reflecting genuine credit risk uncertainty rather than a cost-of-funds constraint. In the current environment, this is rational bank behaviour.</p>
+
+  <h3>Fuel Price Administrative Adjustment</h3>
+  <p>Retail fuel prices were administratively increased in April: diesel to Tk 115/litre, petrol to Tk 135/litre, and octane to Tk 140/litre. These increases directly feed into transport and logistics costs across the economy. For trade finance practitioners assessing corporate creditworthiness in transport-intensive sectors (cold chain, logistics, commodity distribution), revised cost base assumptions are warranted.</p>
+
+  <h3>IMF Conditionality: Reform Roadmap Requirement</h3>
+  <p>The IMF has signalled that the July review will require a written, time-bound financial sector reform roadmap — specifically addressing how banking sector reform momentum initiated by the interim government will be sustained. This conditionality is not unusual, but the political economy of delivering a credible roadmap during an energy shock adds implementation risk. The next IMF consultation is scheduled for the Spring meetings follow-up — monitoring official communications from Dhaka and Washington in June will be important for anyone with Bangladesh sovereign risk exposure.</p>
+</div>
+
+<!-- ══ 10. OPPORTUNITY CORNER ════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Opportunity Corner</div>
+  <div class="section-title">Three Opportunities Emerging From the Crisis</div>
+  <div class="section-rule"></div>
+
+  <div class="opp-card">
+    <div class="opp-label">Energy Transition Finance</div>
+    <div class="opp-title">Renewable Energy as Sovereign Risk Mitigation</div>
+    <div class="opp-body">The Hormuz crisis has made the economic case for Bangladesh's renewable energy transition — particularly solar — more compelling than any policy paper ever could. Bangladesh's renewable potential is substantial (solar irradiance, wind in coastal zones), and the cost of energy import dependency is now visible in real time as a current account and inflation shock. For banks and DFIs: green project finance, solar lease structures, and renewable energy LCs represent a growing opportunity pipeline. The World Bank's Bangladesh Development Update and the IMF's sustainability facility are both pointed in this direction.</div>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-label">RMG Forward Contracts</div>
+    <div class="opp-title">Buyers Locking In Orders Ahead of Freight Peak</div>
+    <div class="opp-body">Western buyers who anticipated the freight surge are now seeking forward order commitments with Bangladeshi garment manufacturers at rates that lock in current pricing before further surcharge escalation. For RMG exporters with strong balance sheets, this creates the opportunity to negotiate modestly improved unit prices in exchange for order certainty — partially recovering the freight cost compression. For banks financing the working capital cycle, these forward commitment structures are lower credit risk than spot orders.</div>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-label">Alternative Energy Sourcing</div>
+    <div class="opp-title">India LNG and Pipeline Gas: A Bilateral Trade Opportunity</div>
+    <div class="opp-body">With Hormuz-transiting LNG supply disrupted, Bangladesh is exploring bilateral energy arrangements that bypass the strait. India's natural gas pipeline infrastructure — and its position as a LNG regasification hub — makes it a potential intermediate supplier for Bangladesh's gas-dependent power sector. Bangladesh-India energy trade finance could emerge as a significant bilateral banking opportunity over the next 12 months, with payment structures, LC documentation, and pricing frameworks all requiring bespoke structuring.</div>
+  </div>
+</div>
+
+<!-- ══ 11. DATA INTELLIGENCE ════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Data Intelligence</div>
+  <div class="section-title">Remittance Trend: Five Months Above $3 Billion</div>
+  <div class="section-rule"></div>
+
+  <p>Bangladesh's remittance inflow has sustained above $3 billion for five consecutive months — a streak with no precedent in the country's economic history. The April 2026 figure of $3.13 billion brings the July–April FY26 cumulative total to $29.33 billion, a 19.5% increase over the equivalent prior-year period. At this pace, FY26 will comfortably surpass the FY25 annual total. The structural drivers — stricter monitoring of informal hundi channels, expanded mobile financial services, and accelerated settlement infrastructure — appear durable.</p>
+
+  <div class="chart-title">Monthly Remittance Inflow (USD Billion) — Nov 2025 to Apr 2026</div>
+
+  <div class="bar-row">
+    <div class="bar-label">Nov '25</div>
+    <div class="bar-track"><div class="bar-fill" style="width:58%"></div></div>
+    <div class="bar-val">$2.20B</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Dec '25</div>
+    <div class="bar-track"><div class="bar-fill" style="width:69%"></div></div>
+    <div class="bar-val">$2.60B</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Jan '26</div>
+    <div class="bar-track"><div class="bar-fill accent" style="width:82%"></div></div>
+    <div class="bar-val">$3.10B</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Feb '26</div>
+    <div class="bar-track"><div class="bar-fill accent" style="width:80%"></div></div>
+    <div class="bar-val">$3.01B</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Mar '26</div>
+    <div class="bar-track"><div class="bar-fill accent" style="width:100%"></div></div>
+    <div class="bar-val">$3.78B ★</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Apr '26</div>
+    <div class="bar-track"><div class="bar-fill accent" style="width:83%"></div></div>
+    <div class="bar-val">$3.13B</div>
+  </div>
+
+  <p style="font-size:11px;color:#8B8FA8;margin-top:12px;">★ March 2026 remains the all-time monthly record. April's $3.13B includes Eid-ul-Azha advance transfers. Source: Bangladesh Bank.</p>
+
+  <h3>Reading Behind the RMG Headline</h3>
+  <p>April's RMG export figure of $3.14 billion (+31.21% YoY) requires context. April 2025 was the weakest month of that fiscal year — disrupted by Eid, India's transshipment revocation, and buyer uncertainty from early US-China trade policy signals. The base effect alone accounts for approximately 15–18 percentage points of the apparent growth. On a two-year stacked average, Bangladesh's RMG export trajectory is tracking at approximately 7–9% annualised growth — solid, but not the 31% headline suggests.</p>
+</div>
+
+<!-- ══ 12. INSIGHT OF THE MONTH ══════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Insight of the Month</div>
+  <div class="section-title">The Hormuz Trap: Energy Dependency and Bangladesh's Fiscal Arithmetic</div>
+  <div class="section-rule"></div>
+
+  <p>The Strait of Hormuz crisis has done something useful: it has made explicit what was always implicit in Bangladesh's development model. The country's rapid industrialisation — particularly its power sector expansion — was financed on the assumption of cheap, accessible fossil fuels transiting a stable global shipping network. That assumption has proved fragile in a way that is now measurable in real time.</p>
+
+  <p>The numbers are stark. Bangladesh's annualised energy import bill has surged by an estimated $4.8 billion above the pre-crisis baseline. Against April's remittance figure of $3.13 billion, the arithmetic is straightforward: one month of remittances barely covers one month of incremental energy import costs. The record-streak remittance performance — celebrated, justifiably, as a structural achievement — is being partially consumed by a structural vulnerability.</p>
+
+  <h3>The Three Layers of the Trap</h3>
+
+  <p><strong>Layer 1 — Supply dependency:</strong> Bangladesh imports approximately 1.4 million tonnes of crude oil and significant LNG volumes annually, with the majority of supply under long-term contracts with Gulf producers (Saudi Aramco, ADNOC) routed via Hormuz. This is not a diversifiable risk in the short term — the contracts, the ships, and the receiving infrastructure are all configured for Gulf supply.</p>
+
+  <p><strong>Layer 2 — Power sector lock-in:</strong> 66% of electricity generation is gas-dependent. This creates a direct transmission from LNG price to electricity cost, which flows into every industrial sector — including the RMG factories that generate export revenues. The irony is precise: the energy shock is simultaneously raising import costs and compressing the cost competitiveness of the export sector that finances the import bill.</p>
+
+  <p><strong>Layer 3 — Fiscal constraint:</strong> Bangladesh cannot easily pass all energy cost increases through to consumers without amplifying already-elevated inflation. But absorbing them through fuel subsidies adds to fiscal pressure at a time when the IMF is requiring fiscal consolidation as a program condition. The government is managing an acute version of the subsidy trilemma — inflation control, fiscal discipline, and growth support cannot all be optimised simultaneously.</p>
+
+  <p><strong>MAY INT's assessment:</strong> The Hormuz crisis is a forcing function for Bangladesh's energy transition debate. The cost of inaction — previously theoretical — is now measurable on a monthly basis. The countries that will emerge from this episode with stronger macro fundamentals are those that use the crisis to accelerate structural change: renewable capacity, energy efficiency investment, and supply chain diversification. Bangladesh's policy response over the next six months will determine whether the Hormuz episode is remembered as a catalyst or merely a cost.</p>
+</div>
+
+<!-- ══ 13. CASE STUDY ═════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Case Study</div>
+  <div class="section-title">The Energy LC Gap: When Settlement Price Exceeds Opening Price by 40%</div>
+  <div class="section-rule"></div>
+
+  <p>Consider the position of a Bangladesh-based independent power producer (IPP) that opened a 90-day usance LC in mid-February 2026 for a crude oil cargo to be delivered and paid in mid-May. At the time of LC opening, Brent was trading at approximately $78/bbl. The LC was sized accordingly — including a reasonable margin buffer — for a cargo valued at approximately $78–82/bbl.</p>
+
+  <p>By May 15, 2026, Brent has settled at $109/bbl. The cargo the LC was opened to finance now costs 35–40% more at the commodity level than the LC was structured to cover. This is not a hypothetical: it is the operating reality for any Bangladeshi energy importer that opened fixed-amount LCs in the pre-Hormuz-closure period.</p>
+
+  <h3>The Credit Event Cascade</h3>
+
+  <p>The sequence creates a potential credit event pathway that trade finance bankers need to identify early:</p>
+
+  <p><strong>Step 1 — Shortfall identification:</strong> At the document presentation stage, the importer's bank identifies that the LC amount is insufficient to cover settlement. The importer must fund the gap — either from their own liquidity or through an emergency facility.</p>
+
+  <p><strong>Step 2 — Liquidity pressure:</strong> For IPPs already managing tight cash flows from power purchase agreement delays, funding a 35–40% commodity cost overrun from working capital is not straightforward. This is where the bank relationship becomes critical — and where the credit quality of the underlying counterparty comes into sharp focus.</p>
+
+  <p><strong>Step 3 — Structural risk:</strong> The broader concern is contagion across a portfolio. If multiple energy import LCs in a bank's book are simultaneously underfunded — a likely scenario given that most large energy importers were opening LCs in the same pre-crisis period — the aggregate exposure on the portfolio becomes material.</p>
+
+  <h3>Approach</h3>
+
+  <p>Banks with energy import LC exposure should conduct an immediate portfolio review to identify all LCs opened prior to the Hormuz closure (late March 2026) with maturity dates falling in May–July 2026. For each, calculate the estimated settlement gap at current commodity prices. Where gaps exceed the borrower's demonstrated liquidity buffer, proactive restructuring discussions — before the LC matures — are preferable to managing a payment default under time pressure.</p>
+
+  <p>The lesson is not that usance LCs for commodity imports are inappropriate. It is that commodity price volatility buffers embedded in LC structuring need to reflect the actual volatility profile of the underlying commodity — a standard that requires revisiting in the current environment.</p>
+</div>
+
+<!-- ══ 14. THOUGHT LEADERSHIP ════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Thought Leadership</div>
+  <div class="section-title">From Vulnerability to Strategy: Why Bangladesh Must Use This Crisis to Accelerate the Energy Transition</div>
+  <div class="section-rule"></div>
+
+  <p>Every major economic shock contains within it an argument for structural reform that peacetime conditions cannot make persuasively enough. The Hormuz crisis is making Bangladesh's energy transition argument with a clarity that two decades of policy papers and climate commitments could not. The question is whether the policy window — always brief, always contested — will be used.</p>
+
+  <p>Bangladesh has the fundamentals for a genuine renewable energy transition. Solar irradiance is among the highest in South Asia. The country's coastal geography creates wind energy potential that has never been seriously exploited. The declining cost curve for utility-scale solar — now below $0.04/kWh in competitive tender markets across the region — makes the economics of renewable displacement of gas-fired generation increasingly compelling even without the Hormuz shock. With it, the economics are unambiguous.</p>
+
+  <h3>The Trade Finance Dimension</h3>
+
+  <p>Energy transition is not only a policy question — it is a trade finance opportunity. Renewable energy projects are fundamentally infrastructure financing transactions: long-dated, asset-backed, with predictable cash flows once operational. For banks with development finance appetite, these are attractive lending propositions. For the trade finance market specifically, the opportunity lies in the equipment import cycle: solar panels, inverters, wind turbines, and grid infrastructure components are all imported goods that generate LC business, supply chain finance, and working capital requirements.</p>
+
+  <p>The World Bank's International Finance Corporation, the Asian Development Bank, and bilateral development finance institutions (including Japan's JICA and Germany's DEG) all have Bangladesh renewable energy mandates. The framework for co-financing structures exists — what has been lacking is the urgency that would drive private sector participation at scale. The Hormuz crisis has provided that urgency.</p>
+
+  <h3>What the IMF Should Note</h3>
+
+  <p>Bangladesh's IMF program includes a Resilience and Sustainability Facility component — specifically designed for climate-related structural adjustment. The energy crisis is exactly the scenario the RSF was conceived for: a country facing acute fiscal pressure from an exogenous shock that is simultaneously an argument for the structural investment the RSF finances. Dhaka's July review submission should explicitly link the Hormuz crisis response to the RSF framework — and request that the IMF's conditionality on fiscal consolidation account for the countercyclical case for public investment in energy transition infrastructure.</p>
+
+  <p><strong>MAY INT's assessment:</strong> Bangladesh's energy vulnerability is not a new discovery — it has been a known structural risk for fifteen years. What the Hormuz crisis has done is eliminate the policy optionality of addressing it gradually. The countries that emerge from this episode with stronger positions will be those that treated the crisis as a forced acceleration of transitions they needed to make anyway. For Bangladesh, the opportunity is real. The constraint, as always, is political will and institutional capacity to execute. The IMF review in July is the next pressure point — and a potential catalyst if Dhaka frames the energy transition agenda correctly.</p>
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-logo"><span>The Trading Post</span> &mdash; MAY International Trade Services Limited</div>
+  <div class="footer-sub">Monthly Trade Intelligence &middot; Dhaka, Bangladesh &middot; Issue #5, May 2026</div>
+  <div class="footer-contact">
+    <a href="https://mayintbd.com">mayintbd.com</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:info@mayinternational.com.bd">info@mayinternational.com.bd</a>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-disclaimer">
+    This newsletter is produced for informational purposes only. The data and analysis contained herein are sourced from publicly available information and MAY INT's proprietary intelligence platform. Nothing in this publication constitutes financial, legal, or compliance advice. Recipients should conduct their own due diligence before acting on any information contained herein.
+    <br><br>
+    Data sourced from: Bangladesh Bank, Trading Economics, Drewry (WCI), BGMEA, IMF, Asian Development Bank, World Bank, USDA, Freightos. Commodity prices reflect mid-May 2026 market levels; energy prices subject to high volatility in current market conditions.
+    <br><br>
+    &copy; 2026 MAY International Trade Services Limited. All rights reserved. To update preferences, contact <a href="mailto:info@mayinternational.com.bd" style="color:#4A4E60;">info@mayinternational.com.bd</a>
+  </div>
+</div>
+
+</div><!-- /.container -->
+</div><!-- /.wrapper -->
+</body>
+</html>
